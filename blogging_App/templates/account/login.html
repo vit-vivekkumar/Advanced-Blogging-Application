@@ -1,0 +1,109 @@
+{% load static %}
+
+{% block header %} {% include 'navbar.html' %} {% endblock header %}  
+{% block content %}
+<head>
+
+<style>
+	.card {
+        margin: 2px auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+body {
+	font-family: 'Varela Round', sans-serif;
+}
+.form-control {
+	box-shadow: none;		
+	font-weight: normal;
+	font-size: 15px;
+}
+.card i {
+    float: right;
+	margin-top: -25px;
+	margin-right:10px;
+    cursor: pointer;
+}
+
+</style>
+
+</head> 
+   {% if messages %}
+            {% for mess in messages %}
+            <div id="alert" style="margin-bottom: 0px;" class="alert alert-{{mess.tags}}" role="alert">
+              {{mess}}
+            </div>
+            {% endfor %}
+    {% endif %} 
+    <script type="text/javascript">
+        setTimeout(function () {
+            $('#alert').alert('close');
+        }, 4000);
+    </script>
+<body>
+
+<div class="card text-center"><br><br>
+
+	<div class="card border-success mb-3" style="max-width: 26rem;">
+  <div class="card-header bg-transparent border-success">Login Form</div>
+  <div class="card-body text-success">
+   {% if messages %}
+            {% for mess in messages %}
+            <div  style="margin-bottom: 0px;" class="alert alert-{{mess.tags}}" role="alert">
+              {{mess}}
+            </div>
+            {% endfor %}
+    {% endif %} 
+    <script type="text/javascript">
+        setTimeout(function () {
+            $('#alert').alert('close');
+        }, 4000);
+    </script>
+    <h5 class="card-title">User Login Form</h5>
+		      <form action="{% url 'login' %}" method="post">
+          {% csrf_token %}
+            <p class="hint-text">Sign in with your social media account</p>
+            <div class="form-group social-btn clearfix">
+              <a href="#" class="btn btn-primary facebook-btn float-left"><i class="fa fa-facebook"></i> Facebook</a>
+              <a href="#" class="btn btn-danger twitter-btn float-right"><i class="fa fa-google"></i> Google+</a>
+            </div>
+            <div class="or-seperator"><b style="width:45px;">or</b></div>
+            <div class="form-group">
+              <input type="text"
+              name="username"
+              placeholder="Username"
+              id="usernameField"
+              value="{{fieldValues.username}}"
+              class="form-control"required="required">
+            </div>
+            <div class="form-group">
+							<input type="password"
+								name="password"
+								placeholder="Password"
+								class="form-control form-control-sm"
+								id="passwordField" required="required">
+								<i class="fa fa-eye" id="togglePassword"></i>
+						</div>
+						<script>
+						const togglePassword = document.querySelector('#togglePassword');
+						const password = document.querySelector('#passwordField');
+						togglePassword.addEventListener('click', function (e) {
+						// toggle the type attribute
+						const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+						password.setAttribute('type', type);
+						// toggle the eye / eye slash icon
+						this.classList.toggle('fa-eye-slash');
+						});
+						</script>
+            <input type="submit" class="btn btn-primary btn-block" value="Login">
+            <div class="text-center mt-2">
+              <a href="#">Forgot Your password?</a>
+            </div>
+          </form>
+  </div>
+  <div class="card-footer bg-transparent border-success">Footer</div>
+</div>
+</div>
+
+</body>
+{% endblock content %}

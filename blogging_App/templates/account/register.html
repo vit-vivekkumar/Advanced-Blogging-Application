@@ -1,0 +1,109 @@
+{% load static %}
+
+{% block header %} {% include 'navbar.html' %} {% endblock header %}  
+{% block content %}
+<head>
+<style>
+	.card {
+        margin: 5px auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+body {
+	font-family: 'Varela Round', sans-serif;
+}
+.form-control {
+	box-shadow: none;		
+	font-weight: normal;
+	font-size: 15px;
+}
+.card i {
+    float: right;
+	margin-top: -25px;
+	margin-right:10px;
+    cursor: pointer;
+}
+
+</style>
+
+</head> 
+<body>
+  {% if messages %}
+            {% for mess in messages %}
+            <div id="alert" style="margin-bottom: 0px;" class="alert alert-{{mess.tags}}" role="alert">
+              {{mess}}
+            </div>
+            {% endfor %}
+    {% endif %} 
+    <script type="text/javascript">
+        setTimeout(function () {
+            $('#alert').alert('close');
+        }, 4000);
+    </script>
+<div class="card text-center bg-light"><br><br>
+	<div class="card border-success mb-4" style="max-width: 24rem;">
+	
+  <div class="card-header bg-transparent border-success">Registraction Form</div>
+   {% if messages %}
+            {% for mess in messages %}
+            <div id="$alert" style="margin-bottom: 0px;" class="alert alert-{{mess.tags}}" role="alert">
+              {{mess}}
+            </div>
+            {% endfor %}
+    {% endif %} 
+    <script type="text/javascript">
+        setTimeout(function () {
+            $('#alert').alert('close');
+        }, 4000);
+    </script>
+  <div class="card-body text-success">
+    <h5 class="card-title">Signin your account</h5>
+		<form action="{% url 'register' %}" method="POST">
+		{% csrf_token %}
+						<p class="hint-text">Fill in this form to create your account!</p>
+						<div class="form-group">
+							<input type="text"
+								name="username"
+								placeholder="Username"
+								id="usernameField"
+								value="{{fieldValues.username}}"
+								class="form-control" required="required">
+						</div>
+							<div class="form-group">
+							<input type="email"
+								name="email"
+								placeholder="Email"
+								class="form-control form-control-sm"
+								id="emailField"
+								value="{{fieldValues.email}}" required="required">
+						</div>
+						<div class="form-group">
+							<input type="password"
+								name="password"
+								placeholder="Password"
+								class="form-control form-control-sm"
+								id="passwordField" required="required">
+								<i class="fa fa-eye" id="togglePassword"></i>
+						</div>
+						<script>
+						const togglePassword = document.querySelector('#togglePassword');
+						const password = document.querySelector('#passwordField');
+						togglePassword.addEventListener('click', function (e) {
+						// toggle the type attribute
+						const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+						password.setAttribute('type', type);
+						// toggle the eye / eye slash icon
+						this.classList.toggle('fa-eye-slash');
+						});
+						</script>
+						<div class="form-group">
+							<label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
+						</div>
+						<input type="submit" class="btn btn-primary btn-block" value="Sign up">
+					</form>
+  </div>
+  <div class="card-footer bg-transparent border-success">Waiting periods are only a step. ...</div>
+</div>
+</div>
+
+{% endblock content %}

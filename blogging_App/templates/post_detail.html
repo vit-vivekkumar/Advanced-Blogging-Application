@@ -1,0 +1,105 @@
+{% load static %}
+{% block header %} {% include 'navbar.html' %} {% endblock header %}  
+{% block content %}
+
+  <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">{% block title %} {{ object.title }} {% endblock title %}</h1>
+
+          <!-- Author -->
+          <p class="lead">
+            by
+            <a href="#">{{user.username}}</a>
+          </p>
+
+          <hr>
+
+          <!-- Date/Time -->
+          <p>{{post.created_on}}</p>
+
+          <hr>
+
+          <!-- Preview Image -->
+          <img class="card-img-top" src="{{ post.upload.url }}">
+
+          <hr>
+
+          <!-- Post Content -->
+<p>
+             {{post.content | safe}}
+</p>
+          <blockquote class="blockquote">
+            <footer class="blockquote-footer">Blog Application Developed by : 
+              <cite title="Source Title">Vivek Kumar </cite>
+            </footer>
+          </blockquote>
+          <hr>
+
+          <!-- Comments Form -->
+          
+    <div class="">
+        <div class="col-md-8">
+            <div class="d-flex flex-column comment-section">
+            {% for comment in comments %}
+                <div class="bg-white p-2">
+                    <div class="d-flex flex-row user-info">
+                    <img class="rounded-circle" src="https://visualpharm.com/assets/30/User-595b40b85ba036ed117da56f.svg" width="40">
+                        <div class="d-flex flex-column justify-content-start ml-2">
+                        <span class="d-block font-weight-bold name">{{user.username}}</span>
+                        <span class="date text-black-50">Shared publicly - {{comment.created_on}}</span>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <p class="comment-text">{{comment.body}}</p>
+                    </div>
+                </div>
+                <small>
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12">
+                        <div style="cursor:pointer;" class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i>
+                        <span class="ml-1">Like</span>
+                        </div>
+                        <div style="cursor:pointer;" class="like p-2 cursor"><i class="fa fa-commenting-o"></i>
+                        <span class="ml-1">Comment</span>
+                        </div>
+                        <div style="cursor:pointer;" class="like p-2 cursor"><i class="fa fa-share"></i>
+                        <span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                </small>
+                {% endfor %}
+                    <strong>Make New Comment </strong>
+                
+                <form id="myForm" method='post'>
+                    {{comment_form.as_p}}
+                    {% csrf_token %}
+                    
+                    <div class="mt-2 text-right">
+                    <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
+                    <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="submit">Cancel</button>
+                </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Sidebar Widgets Column -->
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+        </div>
+          
+      </div>
+      <!-- /.row -->
+ {% endblock content %}
+       <!-- /.container -->
+       <br><br>
+ {% block footer %} {% include 'footer.html' %}{% endblock footer %}
+ 
