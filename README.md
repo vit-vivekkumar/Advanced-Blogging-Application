@@ -1,1 +1,1 @@
-![My Image](Advanced-Blogging-Application/staticfiles/screenshots/Screenshot-2.png)
+![My Image]([Advanced-Blogging-Application/staticfiles/screenshots/Screenshot-2.png](https://github.com/vit-vivekkumar/Advanced-Blogging-Application/blob/47c3a991514a0bb44736c4bae20f9c1737364055/staticfiles/screenshots/Screenshot%20(2).png))
