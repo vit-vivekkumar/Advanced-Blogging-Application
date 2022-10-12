@@ -1,1 +1,1 @@
-# Advanced-Blogging-Application
+![My Image](images/my-image.jpg)
