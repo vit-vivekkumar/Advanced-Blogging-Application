@@ -1,3 +1,4 @@
+<h2> Home Page </h2>
 ![My Image](staticfiles/screenshots/Screenshot1.png)
 ![My Image](staticfiles/screenshots/Screenshot2.png)
 ![My Image](staticfiles/screenshots/Screenshot3.png)
