@@ -18,3 +18,5 @@
 ![My Image](staticfiles/screenshots/Screenshot11.png)
 ## CURD Operation on Blog
 ![My Image](staticfiles/screenshots/Screenshot12.png)
+## Admin Panel
+![My Image](staticfiles/screenshots/Screenshot13.png)
