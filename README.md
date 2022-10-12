@@ -1,4 +1,4 @@
-#Home Page
+## Home Page
 ![My Image](staticfiles/screenshots/Screenshot1.png)
 ![My Image](staticfiles/screenshots/Screenshot2.png)
 ![My Image](staticfiles/screenshots/Screenshot3.png)
